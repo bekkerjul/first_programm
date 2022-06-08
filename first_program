@@ -1,0 +1,10 @@
+with open('students.csv', 'r', encoding = 'utf-8') as infile, open ('emails.txt', 'w', encoding = 'utf-8') as outfile:
+    for line in infile:
+        student_information = line.strip().split(';')
+        mark = int(student_information[-1])*0.6 + int(student_information[-2])*0.4
+        if mark >= 4:
+            print(f'To: {student_information[1]}\nДобрый день, {student_information[0]}!\n'
+                  f'Ваша итоговая оценка за курс - {mark}.\nХороших каникул!', file = outfile)
+        else:
+            print(f'To: {student_information[1]}\nДобрый день, {student_information[0]}!\n'
+                  f'Ваша итоговая оценка за курс - {mark}.\nПлохих каникул!', file=outfile)
